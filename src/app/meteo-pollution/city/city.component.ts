@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { City } from '../shared/models/city.model';
 
 @Component({
   selector: 'mp-city',
@@ -7,16 +8,25 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CityComponent implements OnInit {
 
-  @Input() city: string;
-  
-  constructor() { }
+  @Input() city: City;
+
+  constructor() {
+    this.findLocation();
+  }
 
   ngOnInit() {
   }
 
-  fus() {
-    console.log("fus");
 
+  findLocation() {
+    navigator.geolocation.getCurrentPosition(
+      (event: Position) => this.findCityName(event),                        //success
+      (event: PositionError) => alert("Loooooser!!!!!!!!!")                // error
+    );
+  }
+
+  findCityName(event: Position) {
+    alert("You win!!!");
   }
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { City } from './shared/models/city.model';
 
 @Component({
   selector: 'mp-meteo-pollution',
@@ -7,10 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MeteoPollutionComponent implements OnInit {
 
-  public city: string;
+  public city: City;
 
   constructor() {
-    this.city = "Fus";
+    this.city = {};
   }
 
   ngOnInit() {
