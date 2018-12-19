@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MeteoPollutionComponent implements OnInit {
 
-  constructor() { }
+  public city: string;
+
+  constructor() {
+    this.city = "Fus";
+  }
 
   ngOnInit() {
   }

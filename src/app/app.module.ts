@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MeteoPollutionModule } from './meteo-pollution/meteo-pollution.module';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { MeteoPollutionModule } from './meteo-pollution/meteo-pollution.module';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MeteoPollutionModule
+    MeteoPollutionModule,
+    FlexLayoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

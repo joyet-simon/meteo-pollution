@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'mp-city',
@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CityComponent implements OnInit {
 
+  @Input() city: string;
+  
   constructor() { }
 
   ngOnInit() {
+  }
+
+  fus() {
+    console.log("fus");
+
   }
 
 }

@@ -1,5 +1,8 @@
-<p>
-  Youhou ça marche!!!!
-</p>
-<mp-city></mp-city>
-<mp-cities></mp-cities>
+<mat-toolbar color="accent">
+  <mat-toolbar-row>
+    <button mat-icon-button>
+      <mat-icon class="material-icons">menu</mat-icon>
+    </button>
+    <mp-city [city]="city"></mp-city>
+  </mat-toolbar-row>
+</mat-toolbar>
