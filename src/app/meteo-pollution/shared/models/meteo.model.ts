@@ -1,3 +1,3 @@
 export class Meteo {
-    public meteo: string;
+    meteo: string;
 }

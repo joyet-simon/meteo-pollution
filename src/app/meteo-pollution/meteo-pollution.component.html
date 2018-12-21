@@ -1,6 +1,6 @@
-<mat-sidenav-container class="example-container">
-  <mat-sidenav mode="side" #sidenav mode="side" [(opened)]="opened">
-    <mp-cities></mp-cities>>
+<mat-sidenav-container  fullscreen>
+  <mat-sidenav #sidenav mode="over" >
+    <mp-cities></mp-cities>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="accent">
@@ -8,8 +8,11 @@
         <button mat-button (click)="sidenav.toggle()">
           <mat-icon class="material-icons">menu</mat-icon>
         </button>
-        <mp-city [city]="city"></mp-city>
-        <mat-progress-bar [mode]=isStatutCity() color="warn" ></mat-progress-bar>
+        <mp-city (onCity)="addCity($event)" [city]="city"></mp-city>
+        <mat-progress-bar mode="indeterminate" color="warn"  *ngIf="!city || !city.address; else search"></mat-progress-bar>
+        <ng-template #search>
+          <mat-progress-bar mode="query" color="warn" ></mat-progress-bar>
+        </ng-template>
       </mat-toolbar-row>
     </mat-toolbar>
   </mat-sidenav-content>

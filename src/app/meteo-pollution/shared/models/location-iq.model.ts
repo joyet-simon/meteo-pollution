@@ -1,6 +1,5 @@
 import { Address } from './address.model';
 
-export class City {
-    position: Position;
+export class LocationIQ {
     address: Address;
 }

@@ -1,56 +1,48 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { City } from '../shared/models/city.model';
 import { LocationIqService } from '../shared/services/location-iq.service';
 import { MatSnackBar } from '@angular/material';
+import { Subscription } from 'rxjs';
+import { LocationIQ } from '../shared/models/location-iq.model';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'mp-city',
   templateUrl: './city.component.html',
   styleUrls: ['./city.component.scss']
 })
-export class CityComponent implements OnInit {
+export class CityComponent {
 
   @Input() city: City;
-  statutLocation: number = 0;
+  @Output() onCity: EventEmitter<City>;
 
   constructor(private locationIQService: LocationIqService, private snackBar: MatSnackBar) {
     this.findLocation();
+    this.onCity = new EventEmitter;
   }
-
-  ngOnInit() {
-  }
-
 
   findLocation() {
     navigator.geolocation.getCurrentPosition(
-      (event: Position) => this.findCityName(event),                               //success
-      () => this.openSnackBar("Geolocation Error", "Retry"),                      // error
+      (event: Position) => {                                                      //success
+        this.city.position = event;                                               //
+        this.findCityName();                                                      //
+      },
+      () => this.snackBar.open("Geolocation Error", "Retry").onAction().subscribe(() => this.findLocation()),                      // error
     );
   }
 
-  findCityName(event: Position) {
-    this.statutLocation = 1;
-    this.locationIQService.get(event).subscribe(
-      (reponse) => this.city = {
-        name: reponse['address']['county']
+  findCityName(): Subscription {
+    return this.locationIQService.get(this.city.position).subscribe(
+      (locationIQ: LocationIQ) => {
+        this.city.address = locationIQ.address;
+        this.onCity.emit(this.city);
       },
-      () => this.openSnackBar("City Location Error", "Retry"),
+      (error: HttpErrorResponse) => this.snackBar.open("City Location Error", "Retry").onAction().subscribe(() => this.findCityName())
     )
-    this.statutLocation = 2;
-    
   }
 
-  openSnackBar(message: string, action: string) {
-    this.snackBar.open(message, action, {
-      duration: 10000,
-    }).onAction().subscribe(() => this.findLocation());
-    this.statutLocation = 0;
-    console.log(this.city.name);
-    
-  }
-
-
-
-
+  // openSnackBar(message: string, action: string) {
+  //   this.snackBar.open(message, action).onAction().subscribe(() => this.findLocation());
+  // }
 
 }
