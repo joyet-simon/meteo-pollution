@@ -1,8 +1,16 @@
-<mat-toolbar color="accent">
-  <mat-toolbar-row>
-    <button mat-icon-button>
-      <mat-icon class="material-icons">menu</mat-icon>
-    </button>
-    <mp-city [city]="city"></mp-city>
-  </mat-toolbar-row>
-</mat-toolbar>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav mode="side" #sidenav mode="side" [(opened)]="opened">
+    <mp-cities></mp-cities>>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="accent">
+      <mat-toolbar-row>
+        <button mat-button (click)="sidenav.toggle()">
+          <mat-icon class="material-icons">menu</mat-icon>
+        </button>
+        <mp-city [city]="city"></mp-city>
+        <mat-progress-bar [mode]=isStatutCity() color="warn" ></mat-progress-bar>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </mat-sidenav-content>
+</mat-sidenav-container>
