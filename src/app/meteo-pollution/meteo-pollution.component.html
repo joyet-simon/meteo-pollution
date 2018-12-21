@@ -1,19 +1,28 @@
-<mat-sidenav-container  fullscreen>
-  <mat-sidenav #sidenav mode="over" >
+<mat-sidenav-container fullscreen >
+  <mat-sidenav #sidenav mode="over">
     <mp-cities></mp-cities>
   </mat-sidenav>
-  <mat-sidenav-content>
+  <mat-sidenav-content fxFlex="100">
     <mat-toolbar color="accent">
       <mat-toolbar-row>
-        <button mat-button (click)="sidenav.toggle()">
-          <mat-icon class="material-icons">menu</mat-icon>
-        </button>
-        <mp-city (onCity)="addCity($event)" [city]="city"></mp-city>
-        <mat-progress-bar mode="indeterminate" color="warn"  *ngIf="!city || !city.address; else search"></mat-progress-bar>
-        <ng-template #search>
-          <mat-progress-bar mode="query" color="warn" ></mat-progress-bar>
-        </ng-template>
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="50">
+          <button mat-button (click)="sidenav.toggle()">
+            <mat-icon class="material-icons">menu</mat-icon>
+          </button>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="30">
+          <mp-city (onCity)="addCity($event)" [city]="city"></mp-city>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="20">
+          <mat-progress-bar mode="indeterminate" color="warn" *ngIf="!city || !city.address; else search"></mat-progress-bar>
+          <ng-template #search>
+            <mat-progress-bar mode="query" color="warn"></mat-progress-bar>
+          </ng-template>
+        </div>
       </mat-toolbar-row>
     </mat-toolbar>
+    <div fxLayoutAlign="center center" >
+    <mp-meteo></mp-meteo>
+  </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

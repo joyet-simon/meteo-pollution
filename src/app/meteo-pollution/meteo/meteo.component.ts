@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { City } from '../shared/models/city.model';
 import { Meteo } from '../shared/models/meteo.model';
 
@@ -7,7 +7,7 @@ import { Meteo } from '../shared/models/meteo.model';
   templateUrl: './meteo.component.html',
   styleUrls: ['./meteo.component.scss']
 })
-export class MeteoComponent implements OnInit {
+export class MeteoComponent implements OnInit, OnChanges {
 
   @Input() city: City;
   @Input() meteo: Meteo;
@@ -15,6 +15,9 @@ export class MeteoComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  ngOnChanges() {
   }
 
 }
