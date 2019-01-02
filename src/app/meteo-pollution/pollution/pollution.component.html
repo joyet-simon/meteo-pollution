@@ -1,4 +1,1 @@
-<span  *ngIf="!pollution; else display">Pollution introuvable</span>
-<ng-template #display>
-    <span >AQI = {{pollution.aqi}} </span>
-</ng-template>
+<span>AQI = {{pollution.data? pollution.data.aqi : "---"}} </span>

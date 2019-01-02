@@ -1,4 +1,1 @@
-<span  *ngIf="!meteo; else display">Météo introuvable</span>
-<ng-template #display>
-    <span >{{meteo.main.temp-273.15}} °C</span>
-</ng-template>
+<span>{{meteo.main? (meteo.main.temp|number:'1.0-1'): "---"}} °C</span>

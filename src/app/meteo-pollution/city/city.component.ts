@@ -41,8 +41,4 @@ export class CityComponent {
     )
   }
 
-  // openSnackBar(message: string, action: string) {
-  //   this.snackBar.open(message, action).onAction().subscribe(() => this.findLocation());
-  // }
-
 }

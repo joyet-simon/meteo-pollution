@@ -1,3 +1,5 @@
+import { Data } from './data-aqicn.model';
+
 export class Aqicn {
-    aqi: string;
+    data: Data;
 }

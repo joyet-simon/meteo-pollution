@@ -13,6 +13,6 @@ export class MeteoService {
   constructor(private http: HttpClient) { }
 
   get(city: City): Observable<Meteo> {
-    return this.http.get<Meteo>(`http://api.openweathermap.org/data/2.5/weather?q=${city.address.county}&APPID=${environment.openWeatherMap}&format=json `);
+    return this.http.get<Meteo>(`http://api.openweathermap.org/data/2.5/weather?q=${city.address.county}&APPID=${environment.openWeatherMap}&format=json&units=metric `);
   }
 }
