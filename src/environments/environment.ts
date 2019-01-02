@@ -5,6 +5,8 @@
 export const environment = {
   production: false,
   locationIQ: "608cb97a5b7752",
+  openWeatherMap: "caeeee0bf237754cb80b5bcc1f9fcbaa",
+  aqicn: "8e534220cfb3dca584d31787dc7706f477c6241b",
 };
 
 /*

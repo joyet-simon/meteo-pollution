@@ -1,3 +1,4 @@
-<p>
-  meteo works!
-</p>
+<span  *ngIf="!meteo; else display">Météo introuvable</span>
+<ng-template #display>
+    <span >{{meteo.main.temp-273.15}} °C</span>
+</ng-template>

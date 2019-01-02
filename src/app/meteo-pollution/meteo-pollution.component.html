@@ -1,4 +1,4 @@
-<mat-sidenav-container fullscreen >
+<mat-sidenav-container fullscreen>
   <mat-sidenav #sidenav mode="over">
     <mp-cities></mp-cities>
   </mat-sidenav>
@@ -11,7 +11,7 @@
           </button>
         </div>
         <div fxLayout="row" fxLayoutAlign="start center" fxFlex="30">
-          <mp-city (onCity)="addCity($event)" [city]="city"></mp-city>
+          <mp-city (onCity)="onCity($event)" [city]="city"></mp-city>
         </div>
         <div fxLayout="row" fxLayoutAlign="start center" fxFlex="20">
           <mat-progress-bar mode="indeterminate" color="warn" *ngIf="!city || !city.address; else search"></mat-progress-bar>
@@ -21,8 +21,11 @@
         </div>
       </mat-toolbar-row>
     </mat-toolbar>
-    <div fxLayoutAlign="center center" >
-    <mp-meteo></mp-meteo>
-  </div>
+    <div fxLayoutAlign="center center" *ngIf="city.address">
+      <mp-meteo (onMeteo)="onMeteo($event)" [meteo]="meteo" [city]="city"></mp-meteo>
+    </div>
+    <div fxLayoutAlign="center center" *ngIf="city.address">
+      <mp-pollution (onPollution)="onPollution($event)" [pollution]="pollution" [city]="city"></mp-pollution>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
