@@ -2,15 +2,15 @@
   <mat-sidenav #sidenav mode="over">
     <mp-cities></mp-cities>
   </mat-sidenav>
-  <mat-sidenav-content fxFlex="100">
+  <mat-sidenav-content fxLayout="column">
     <mat-toolbar color="accent">
       <mat-toolbar-row>
-        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="50">
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="20">
           <button mat-button (click)="sidenav.toggle()">
             <mat-icon class="material-icons">menu</mat-icon>
           </button>
         </div>
-        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="30">
+        <div fxLayout="row" fxLayoutAlign="center center" fxFlex="60">
           <mp-city (onCity)="onCity($event)" [city]="city"></mp-city>
         </div>
         <div fxLayout="row" fxLayoutAlign="start center" fxFlex="20">
@@ -21,10 +21,11 @@
         </div>
       </mat-toolbar-row>
     </mat-toolbar>
-    <div fxLayoutAlign="center center" >
-      <mp-meteo (onMeteo)="onMeteo($event)" [meteo]="meteo" [city]="!city.address ? null : city"></mp-meteo>
+    <div fxLayoutAlign="center center" fxFlex="50" fxLayout="row">
+      <mp-meteo [class]="meteo.weather[0].main|lowercase" fxFlex="100" (onMeteo)="onMeteo($event)" [meteo]="meteo"
+        [city]="!city.address ? null : city"></mp-meteo>
     </div>
-    <div fxLayoutAlign="center center" >
+    <div fxLayoutAlign="center center" fxFlex="50">
       <mp-pollution (onPollution)="onPollution($event)" [pollution]="pollution" [city]="!city.address ? null : city"></mp-pollution>
     </div>
   </mat-sidenav-content>

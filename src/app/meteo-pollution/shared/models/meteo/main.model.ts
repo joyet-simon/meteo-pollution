@@ -1,3 +1,3 @@
 export class Main {
-    temp: string;
+    temp: number;
 }

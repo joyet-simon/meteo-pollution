@@ -1,9 +1,9 @@
-import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
-import { City } from '../shared/models/city.model';
-import { Pollution } from '../shared/models/pollution-model';
-import { Aqicn } from '../shared/models/aqicn.model';
+import { Component, Input, OnChanges, Output, EventEmitter } from '@angular/core';
+import { City } from '../shared/models/city/city.model';
+import { Pollution } from '../shared/models/pollution/pollution-model';
+import { Aqicn } from '../shared/models/pollution/aqicn.model';
 import { MatSnackBar } from '@angular/material';
-import { AqicnService } from '../shared/services/aqicn.service';
+import { AqicnService } from '../shared/services/aqicn/aqicn.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
@@ -27,8 +27,6 @@ export class PollutionComponent implements OnChanges {
     } else {
       return this.aqicnService.get(this.city).subscribe(
         (aqicn: Aqicn) => {
-          console.log(aqicn);
-
           this.pollution.data = aqicn.data;
           this.onPollution.emit(this.pollution);
         },

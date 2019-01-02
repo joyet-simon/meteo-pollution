@@ -1,0 +1,48 @@
+.clear{
+    background-image: url("/assets/climat-clear.png");
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100%;
+}
+
+.clouds{
+    background-image: url("/assets/climat-cloud.png");
+    background-attachment: fixed;
+    background-size: 100%;
+    height: 100%;
+}
+
+.drizzle{
+    background-image: url("/assets/climat-drizzle.png");
+    background-attachment: fixed;
+    background-size: auto;
+    height: 100%;
+}
+
+.dust{
+    background-image: url("/assets/climat-dust.png");
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100%;
+}
+
+.rain{
+    background-image: url("/assets/climat-rain.png");
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100%;
+}
+
+.snow{
+    background-image: url("/assets/climat-snow.png");
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100%;
+}
+
+.thunderstorm{
+    background-image: url("/assets/climat-thunderstorm.png");
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100%;
+}

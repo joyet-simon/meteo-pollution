@@ -1,9 +1,9 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { City } from '../shared/models/city.model';
-import { LocationIqService } from '../shared/services/location-iq.service';
+import { City } from '../shared/models/city/city.model';
+import { LocationIqService } from '../shared/services/location-iq/location-iq.service';
 import { MatSnackBar } from '@angular/material';
 import { Subscription } from 'rxjs';
-import { LocationIQ } from '../shared/models/location-iq.model';
+import { LocationIQ } from '../shared/models/city/location-iq.model';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({

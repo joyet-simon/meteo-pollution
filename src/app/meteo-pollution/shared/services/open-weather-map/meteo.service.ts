@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Meteo } from '../models/meteo.model';
+import { Meteo } from '../../models/meteo/meteo.model';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { City } from '../models/city.model';
+import { City } from '../../models/city/city.model';
 import { environment } from 'src/environments/environment';
 
 @Injectable({

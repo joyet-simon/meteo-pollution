@@ -1,1 +1,5 @@
-<span>{{meteo.main? (meteo.main.temp|number:'1.0-1'): "---"}} °C</span>
+<div fxFlex="100" fxLayoutAlign="center center" *ngIf="meteo.weather">
+    <span >{{meteo.main? (meteo.main.temp|number:'1.0-1'): "---"}} °C</span>
+</div>
+
+

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { City } from './shared/models/city.model';
-import { Meteo } from './shared/models/meteo.model';
-import { Pollution } from './shared/models/pollution-model';
+import { City } from './shared/models/city/city.model';
+import { Meteo } from './shared/models/meteo/meteo.model';
+import { Pollution } from './shared/models/pollution/pollution-model';
 
 @Component({
   selector: 'mp-meteo-pollution',
@@ -25,12 +25,9 @@ export class MeteoPollutionComponent {
   }
 
   onMeteo(meteo: Meteo) {
-    console.log(meteo);
   }
 
-  onPollution(pollution: Pollution){
-    console.log(pollution);
-    
+  onPollution(pollution: Pollution) {
   }
 
 }
