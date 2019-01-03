@@ -7,7 +7,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import {FlexLayoutModule} from '@angular/flex-layout';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material';
 
 @NgModule({
   declarations: [],
@@ -21,6 +23,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     MatListModule,
     MatProgressBarModule,
     FlexLayoutModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   exports: [
     MatButtonModule,
@@ -31,6 +35,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     MatListModule,
     MatProgressBarModule,
     FlexLayoutModule,
+    MatFormFieldModule,
+    MatInputModule,
   ]
 })
 export class MaterialModule { }

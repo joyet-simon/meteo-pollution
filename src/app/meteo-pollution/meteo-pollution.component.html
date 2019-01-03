@@ -2,7 +2,7 @@
   <mat-sidenav #sidenav mode="over">
     <mp-cities></mp-cities>
   </mat-sidenav>
-  <mat-sidenav-content fxLayout="column">
+  <mat-sidenav-content class="blue" fxLayout="column">
     <mat-toolbar color="accent">
       <mat-toolbar-row>
         <div fxLayout="row" fxLayoutAlign="start center" fxFlex="20">
@@ -22,7 +22,7 @@
         </div>
       </mat-toolbar-row>
     </mat-toolbar>
-    <div fxLayoutAlign="center center" fxFlex="50" fxLayout="row">
+    <div class="blue" fxLayoutAlign="center center" fxFlex="50" fxLayout="row">
       <mp-meteo [class]="meteo?(meteo.weather?(meteo.weather[0].main|lowercase):null):null" fxFlex="100" (onMeteo)="onMeteo($event)"
         [meteo]="meteo" [city]="!city.address ? null : city"></mp-meteo>
     </div>

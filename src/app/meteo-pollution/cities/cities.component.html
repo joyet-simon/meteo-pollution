@@ -1,5 +1,13 @@
-<mat-list>
+<mat-nav-list>
     <mat-list-item> Lyon </mat-list-item>
     <mat-list-item> Paris </mat-list-item>
     <mat-list-item> Moscou </mat-list-item>
-</mat-list>
+
+    <form [formGroup]="cityForm" (ngSubmit)="inputCity.blur()">
+        <mat-form-field>
+            <input #inputCity (blur)="onSubmit($event)" matInput placeholder="Add a city" formControlName="cityName">
+            <mat-error *ngIf="cityForm.get('cityName').errors && cityForm.get('cityName').errors.minlength">Too short</mat-error>
+            <mat-error *ngIf="cityForm.get('cityName').errors && cityForm.get('cityName').errors.maxlength">Too long</mat-error>
+        </mat-form-field>
+    </form>
+</mat-nav-list>
