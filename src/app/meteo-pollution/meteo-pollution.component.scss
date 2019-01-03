@@ -1,27 +1,27 @@
 .clear{
     background-image: url("/assets/climat-clear.png");
-    background-attachment: fixed;
-    background-size: 100%;
+    background-position: left;
+    background-size: cover;
     height: 100%;
 }
 
 .clouds{
     background-image: url("/assets/climat-cloud.png");
-    background-attachment: fixed;
-    background-size: 100%;
+    background-position: left;
+    background-size: cover;
     height: 100%;
 }
 
 .drizzle{
     background-image: url("/assets/climat-drizzle.png");
-    background-attachment: fixed;
-    background-size: auto;
+    background-position: left;
+    background-size: cover;
     height: 100%;
 }
 
 .dust{
     background-image: url("/assets/climat-dust.png");
-    background-attachment: fixed;
+    background-position: left;
     background-size: cover;
     height: 100%;
 }
@@ -35,14 +35,14 @@
 
 .snow{
     background-image: url("/assets/climat-snow.png");
-    background-attachment: fixed;
+    background-position: left;
     background-size: cover;
     height: 100%;
 }
 
 .thunderstorm{
     background-image: url("/assets/climat-thunderstorm.png");
-    background-attachment: fixed;
+    background-position: left;
     background-size: cover;
     height: 100%;
 }

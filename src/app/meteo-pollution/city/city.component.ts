@@ -23,11 +23,11 @@ export class CityComponent {
 
   findLocation() {
     navigator.geolocation.getCurrentPosition(
-      (event: Position) => {                                                      //success
-        this.city.position = event;                                               //
-        this.findCityName();                                                      //
+      (event: Position) => {
+        this.city.position = event;
+        this.findCityName();
       },
-      () => this.snackBar.open("Geolocation Error", "Retry").onAction().subscribe(() => this.findLocation()),                      // error
+      () => this.snackBar.open("Geolocation Error", "Retry").onAction().subscribe(() => this.findLocation()),
     );
   }
 
