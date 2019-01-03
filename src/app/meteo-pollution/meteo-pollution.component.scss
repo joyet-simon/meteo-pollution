@@ -1,3 +1,5 @@
+@import "~@angular/material/_theming.scss";
+
 .clear{
     background-image: url("/assets/climat-clear.png");
     background-position: left;
@@ -45,4 +47,15 @@
     background-position: left;
     background-size: cover;
     height: 100%;
+}
+
+.back-blue{
+    background-color: map-get($map: $mat-blue, $key: 800);
+}
+mat-toolbar{
+    background-color: map-get($map: $mat-blue, $key: 900);
+}
+
+.back-grey{
+    background-color: map-get($map: $mat-blue, $key: 700);
 }

@@ -2,8 +2,8 @@
   <mat-sidenav #sidenav mode="over">
     <mp-cities></mp-cities>
   </mat-sidenav>
-  <mat-sidenav-content class="blue" fxLayout="column">
-    <mat-toolbar color="accent">
+  <mat-sidenav-content class="back-blue" fxLayout="column">
+    <mat-toolbar>
       <mat-toolbar-row>
         <div fxLayout="row" fxLayoutAlign="start center" fxFlex="20">
           <button mat-button (click)="sidenav.toggle()">
@@ -11,7 +11,7 @@
           </button>
         </div>
         <div fxLayout="row" fxLayoutAlign="center center" fxFlex="60">
-          <mp-city (onCity)="onCity($event)" [city]="city"></mp-city>
+          <mp-city (onCity)="addCity($event)" [city]="city"></mp-city>
         </div>
         <div fxLayout="row" fxLayoutAlign="start center" fxFlex="20">
           <mat-progress-bar mode="indeterminate" color="warn" *ngIf="!city || !city.address; else search">
@@ -22,12 +22,13 @@
         </div>
       </mat-toolbar-row>
     </mat-toolbar>
-    <div class="blue" fxLayoutAlign="center center" fxFlex="50" fxLayout="row">
-      <mp-meteo [class]="meteo?(meteo.weather?(meteo.weather[0].main|lowercase):null):null" fxFlex="100" (onMeteo)="onMeteo($event)"
+    <div class="blue" fxLayoutAlign="center center" fxFlex="75" fxLayout="row">
+      <mp-meteo [class]="meteo?(meteo.weather?(meteo.weather[0].main|lowercase):null):null" fxFlex="100" (onMeteo)="addMeteo($event)"
         [meteo]="meteo" [city]="!city.address ? null : city"></mp-meteo>
     </div>
-    <div fxLayoutAlign="center center" fxFlex="50">
-      <mp-pollution (onPollution)="onPollution($event)" [pollution]="pollution" [city]="!city.address ? null : city">
+    <div class="back-grey" fxLayoutAlign="center center" fxFlex="25" fxLayout="column">
+      <h2>Pollution</h2>
+      <mp-pollution fxFlex="100" (onPollution)="addPollution($event)" [pollution]="pollution" [city]="!city.address ? null : city">
       </mp-pollution>
     </div>
   </mat-sidenav-content>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { City } from './shared/models/city/city.model';
 import { Meteo } from './shared/models/meteo/meteo.model';
 import { Pollution } from './shared/models/pollution/pollution-model';
+import { CitiesService } from './shared/services/cities/cities.service';
 
 @Component({
   selector: 'mp-meteo-pollution',
@@ -14,20 +15,20 @@ export class MeteoPollutionComponent {
   public meteo: Meteo;
   public pollution: Pollution;
 
-  constructor() {
+  constructor(private citiesService: CitiesService) {
     this.city = new City;
     this.meteo = new Meteo;
     this.pollution = new Pollution;
   }
 
-  onCity(city: City) {
+  addCity(city: City) {
     
   }
 
-  onMeteo(meteo: Meteo) {   
+  addMeteo(meteo: Meteo) {   
   }
 
-  onPollution(pollution: Pollution) {
+  addPollution(pollution: Pollution) {
   }
 
 }

@@ -1,3 +1,5 @@
+import { Iaqi } from './iaqi.model';
+
 export class Data {
-    aqi: string;
+    iaqi: Iaqi;
 }
