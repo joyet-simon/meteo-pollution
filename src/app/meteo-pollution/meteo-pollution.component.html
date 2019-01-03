@@ -14,7 +14,8 @@
           <mp-city (onCity)="onCity($event)" [city]="city"></mp-city>
         </div>
         <div fxLayout="row" fxLayoutAlign="start center" fxFlex="20">
-          <mat-progress-bar mode="indeterminate" color="warn" *ngIf="!city || !city.address; else search"></mat-progress-bar>
+          <mat-progress-bar mode="indeterminate" color="warn" *ngIf="!city || !city.address; else search">
+          </mat-progress-bar>
           <ng-template #search>
             <mat-progress-bar mode="query" color="warn" *ngIf="city.address && !meteo"></mat-progress-bar>
           </ng-template>
@@ -22,11 +23,12 @@
       </mat-toolbar-row>
     </mat-toolbar>
     <div fxLayoutAlign="center center" fxFlex="50" fxLayout="row">
-      <mp-meteo [class]="meteo.weather[0].main|lowercase" fxFlex="100" (onMeteo)="onMeteo($event)" [meteo]="meteo"
-        [city]="!city.address ? null : city"></mp-meteo>
+      <mp-meteo [class]="meteo?(meteo.weather?(meteo.weather[0].main|lowercase):null):null" fxFlex="100" (onMeteo)="onMeteo($event)"
+        [meteo]="meteo" [city]="!city.address ? null : city"></mp-meteo>
     </div>
     <div fxLayoutAlign="center center" fxFlex="50">
-      <mp-pollution (onPollution)="onPollution($event)" [pollution]="pollution" [city]="!city.address ? null : city"></mp-pollution>
+      <mp-pollution (onPollution)="onPollution($event)" [pollution]="pollution" [city]="!city.address ? null : city">
+      </mp-pollution>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

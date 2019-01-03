@@ -1,5 +1,19 @@
-<div fxFlex="100" fxLayoutAlign="center center" *ngIf="meteo.weather">
-    <span >{{meteo.main? (meteo.main.temp|number:'1.0-1'): "---"}} °C</span>
+<div fxFlex="100" fxLayoutAlign="center center" *ngIf="meteo.weather" fxLayout="column">
+    <div class="temp" fxFlex="100" fxLayoutAlign="center center">
+        <span>{{meteo.main? (meteo.main.temp|number:'1.0-1'): "---"}} °C</span>
+    </div>
+    <div class="largeur" fxFlex="100" fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="20%">
+        <div>
+            <p>Wind:</p>
+            <p>{{meteo.wind? meteo.wind.speed:"---"}} meter/sec</p>
+            <p>{{meteo.wind? meteo.wind.deg:"---"}} degrees</p>
+        </div>
+        <div>
+            <p>Humidity:</p>
+            <p>{{meteo.main? meteo.main.humidity:"---"}} %</p>
+        </div>
+        <div>
+            <p>{{meteo.weather? meteo.weather[0].description:"---"}}</p>
+        </div>
+    </div>
 </div>
-
-

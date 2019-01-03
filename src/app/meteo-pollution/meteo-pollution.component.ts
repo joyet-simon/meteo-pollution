@@ -25,6 +25,8 @@ export class MeteoPollutionComponent {
   }
 
   onMeteo(meteo: Meteo) {
+    console.log(this.meteo.weather[0].main);
+    
   }
 
   onPollution(pollution: Pollution) {

@@ -31,7 +31,7 @@ export class MeteoComponent implements OnInit, OnChanges {
         (openWeatherMap: OpenWeatherMap) => {
           this.meteo.main = openWeatherMap.main;
           this.meteo.weather = openWeatherMap.weather;
-          this.meteo.wind = openWeatherMap.wind;        
+          this.meteo.wind = openWeatherMap.wind;                  
           this.onMeteo.emit(this.meteo);
         },
         (error: HttpErrorResponse) => this.snackBar.open(error.message, "Retry").onAction().subscribe(() => this.ngOnChanges())
