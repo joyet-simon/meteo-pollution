@@ -22,7 +22,7 @@ export class MeteoPollutionComponent {
   }
 
   addCity(city: City) {
-    
+    this.citiesService.post(city);
   }
 
   addMeteo(meteo: Meteo) {   

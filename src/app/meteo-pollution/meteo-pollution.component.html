@@ -26,8 +26,8 @@
       <mp-meteo [class]="meteo?(meteo.weather?(meteo.weather[0].main|lowercase):null):null" fxFlex="100" (onMeteo)="addMeteo($event)"
         [meteo]="meteo" [city]="!city.address ? null : city"></mp-meteo>
     </div>
-    <div class="back-grey" fxLayoutAlign="center center" fxFlex="25" fxLayout="column">
-      <h2>Pollution</h2>
+    <div class="back-grey" fxLayoutAlign="center center" fxFlex="25" fxLayout="row">
+      
       <mp-pollution fxFlex="100" (onPollution)="addPollution($event)" [pollution]="pollution" [city]="!city.address ? null : city">
       </mp-pollution>
     </div>
