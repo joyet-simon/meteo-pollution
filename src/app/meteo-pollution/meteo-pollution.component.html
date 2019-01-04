@@ -1,6 +1,6 @@
 <mat-sidenav-container fullscreen>
   <mat-sidenav #sidenav mode="over">
-    <mp-cities></mp-cities>
+    <mp-cities (onCity)="addCity($event)" ></mp-cities>
   </mat-sidenav>
   <mat-sidenav-content class="back-blue" fxLayout="column">
     <mat-toolbar>
