@@ -16,19 +16,24 @@ export class MeteoPollutionComponent {
   public pollution: Pollution;
 
   constructor(private citiesService: CitiesService) {
-    this.city = new City;
-    this.meteo = new Meteo;
-    this.pollution = new Pollution;
+  }
+
+  setCity(city: City) {
+    this.city = city;
+    this.meteo = null;
+    this.pollution = null;
   }
 
   addCity(city: City) {
     this.citiesService.post(city);
   }
 
-  addMeteo(meteo: Meteo) {   
+  setMeteo(meteo: Meteo) {
+    this.meteo = meteo;
   }
 
-  addPollution(pollution: Pollution) {
+  setPollution(pollution: Pollution) {
+    this.pollution = pollution;
   }
 
 }

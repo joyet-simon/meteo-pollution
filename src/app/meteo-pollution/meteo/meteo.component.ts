@@ -6,6 +6,7 @@ import { MatSnackBar } from '@angular/material';
 import { OpenWeatherMap } from '../shared/models/meteo/open-weather-map.model';
 import { HttpErrorResponse } from '@angular/common/http';
 
+
 @Component({
   selector: 'mp-meteo',
   templateUrl: './meteo.component.html',
@@ -13,9 +14,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class MeteoComponent implements OnInit, OnChanges {
 
-
   @Input() city: City;
-  @Input() meteo: Meteo;
+  @Input() meteo: Meteo
   @Output() onMeteo: EventEmitter<Meteo>;
 
   constructor(private MeteoService: MeteoService, private snackBar: MatSnackBar) {
@@ -25,18 +25,21 @@ export class MeteoComponent implements OnInit, OnChanges {
   ngOnInit() { }
 
   ngOnChanges() {
-    if (!this.city || !this.city.address) {
-    } else {
-      return this.MeteoService.get(this.city).subscribe(
-        (openWeatherMap: OpenWeatherMap) => {
-          this.meteo.main = openWeatherMap.main;
-          this.meteo.weather = openWeatherMap.weather;
-          this.meteo.wind = openWeatherMap.wind;                  
-          this.onMeteo.emit(this.meteo);
-        },
-        (error: HttpErrorResponse) => this.snackBar.open(error.message, "Retry").onAction().subscribe(() => this.ngOnChanges())
-      );
+    if (this.city && this.city.address && !this.meteo) {
+      this.findMeteo()
     }
   }
 
+  findMeteo() {
+    return this.MeteoService.get(this.city).subscribe(
+      (openWeatherMap: OpenWeatherMap) => {
+        const meteo = new Meteo;
+        meteo.main = openWeatherMap.main;
+        meteo.weather = openWeatherMap.weather;
+        meteo.wind = openWeatherMap.wind;
+        this.onMeteo.emit(meteo);
+      },
+      (error: HttpErrorResponse) => this.snackBar.open(error.message, "Retry").onAction().subscribe(() => this.ngOnChanges())
+    );
+  }
 }

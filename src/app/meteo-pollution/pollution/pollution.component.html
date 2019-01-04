@@ -1,10 +1,10 @@
-<div fxFlex="100" fxLayoutAlign="center center" *ngIf="pollution.data" fxLayout="column">
+<div fxFlex="100" fxLayoutAlign="center center" *ngIf="pollution && pollution.data" fxLayout="column">
     <div fxFlex="100" fxLayoutAlign="center center">
         <h2>Pollution</h2>
     </div>
     <div class="largeur" fxFlex="100" fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="20%">
-        <p>NO2 = {{pollution.data? pollution.data.iaqi.no2.v : "---"}} µg/m3</p>
-        <p>O3 = {{pollution.data? pollution.data.iaqi.o3.v : "---"}} µg/m3</p>
-        <p>Pm10 = {{pollution.data? pollution.data.iaqi.pm10.v : "---"}} µg/m3</p>
+        <p>NO2 = {{pollution.data.iaqi?(pollution.data.iaqi.no2? pollution.data.iaqi.no2.v : "---"):"---"}} µg/m3</p>
+        <p>O3 = {{pollution.data.iaqi?(pollution.data.iaqi.o3? pollution.data.iaqi.o3.v : "---"):"---"}} µg/m3</p>
+        <p>Pm10 = {{pollution.data.iaqi?(pollution.data.iaqi.pm10? pollution.data.iaqi.pm10.v : "---"):"---"}} µg/m3</p>
     </div>
 </div>

@@ -17,27 +17,27 @@ export class CityComponent {
   @Output() onCity: EventEmitter<City>;
 
   constructor(private locationIQService: LocationIqService, private snackBar: MatSnackBar) {
+
     this.findLocation();
     this.onCity = new EventEmitter;
   }
 
   findLocation() {
     navigator.geolocation.getCurrentPosition(
-      (event: Position) => {
-        this.city.position = event;
-        this.findCityName();
-      },
+      (event: Position) => this.findCityName(event),
       () => this.snackBar.open("Geolocation Error", "Retry").onAction().subscribe(() => this.findLocation()),
     );
   }
 
-  findCityName(): Subscription {
-    return this.locationIQService.get(this.city.position).subscribe(
+  findCityName(position: Position): Subscription {
+    return this.locationIQService.get(position).subscribe(
       (locationIQ: LocationIQ) => {
-        this.city.address = locationIQ.address;
-        this.onCity.emit(this.city);
+        const city = new City;
+        city.position = position;
+        city.address = locationIQ.address;
+        this.onCity.emit(city);
       },
-      (error: HttpErrorResponse) => this.snackBar.open("City Location Error", "Retry").onAction().subscribe(() => this.findCityName())
+      (error: HttpErrorResponse) => this.snackBar.open("City Location Error", "Retry").onAction().subscribe(() => this.findCityName(position))
     )
   }
 

@@ -22,16 +22,19 @@ export class PollutionComponent implements OnChanges {
   }
 
   ngOnChanges() {
-    if (!this.city || !this.city.address) {
-
-    } else {
-      return this.aqicnService.get(this.city).subscribe(
-        (aqicn: Aqicn) => {
-          this.pollution.data = aqicn.data;
-          this.onPollution.emit(this.pollution);
-        },
-        (error: HttpErrorResponse) => this.snackBar.open(error.message, "Retry").onAction().subscribe(() => this.ngOnChanges())
-      );
+    if (this.city && this.city.address && !this.pollution) {
+      this.findPollution();
     }
+  }
+
+  findPollution() {
+    return this.aqicnService.get(this.city).subscribe(
+      (aqicn: Aqicn) => {
+        const pollution = new Pollution;
+        pollution.data = aqicn.data;
+        this.onPollution.emit(pollution);
+      },
+      (error: HttpErrorResponse) => this.snackBar.open(error.message, "Retry").onAction().subscribe(() => this.ngOnChanges())
+    );
   }
 }
