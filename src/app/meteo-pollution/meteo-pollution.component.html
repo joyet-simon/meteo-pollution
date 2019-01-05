@@ -13,13 +13,16 @@
         <div fxLayout="row" fxLayoutAlign="center center" fxFlex="60">
           <mp-city (onCity)="setCity($event)" [city]="city"></mp-city>
         </div>
-        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="20">
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="15">
           <mat-progress-bar mode="indeterminate" color="warn" *ngIf="!city || !city.address; else search">
           </mat-progress-bar>
           <ng-template #search>
             <mat-progress-bar mode="query" color="warn" *ngIf="city.address && !meteo"></mat-progress-bar>
           </ng-template>
         </div>
+        <button mat-button [routerLink]="['/settings']">
+          <mat-icon>settings</mat-icon>
+        </button>
       </mat-toolbar-row>
     </mat-toolbar>
     <div class="blue" fxLayoutAlign="center center" fxFlex="75" fxLayout="row">
