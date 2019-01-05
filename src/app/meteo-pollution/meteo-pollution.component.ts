@@ -20,6 +20,7 @@ export class MeteoPollutionComponent {
 
   setCity(city: City) {
     this.city = city;
+    this.addCity(city);
     this.meteo = null;
     this.pollution = null;
   }

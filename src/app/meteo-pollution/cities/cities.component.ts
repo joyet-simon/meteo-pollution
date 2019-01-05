@@ -3,6 +3,10 @@ import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/fo
 import { City } from '../shared/models/city/city.model';
 import { Address } from '../shared/models/city/address.model';
 import { CitiesService } from '../shared/services/cities/cities.service';
+import { LocationIqService } from '../shared/services/location-iq/location-iq.service';
+import { LocationIQ } from '../shared/models/city/location-iq.model';
+import { HttpErrorResponse } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'mp-cities',
@@ -15,7 +19,7 @@ export class CitiesComponent {
   public cities: City[];
   @Output() onCity: EventEmitter<City>;
 
-  constructor(private formBuilder: FormBuilder, private citiesService: CitiesService) {
+  constructor(private snackBar: MatSnackBar, private formBuilder: FormBuilder, private citiesService: CitiesService, private locationIqService: LocationIqService) {
     this.cityForm = this.createCityForm();
     this.citiesService.get().subscribe((cities: City[]) => this.cities = cities);
     this.onCity = new EventEmitter;
@@ -38,7 +42,12 @@ export class CitiesComponent {
       city.address = new Address;
       city.address.county = cityName.value;
       cityName.setValue("");
-      this.onCity.emit(city);
+      this.locationIqService.getReverse(city).subscribe(
+        () => {
+          this.onCity.emit(city);
+        },
+        () => this.snackBar.open("This input isn't a city", "Ok")
+      )
     }
   }
 
