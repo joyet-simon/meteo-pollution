@@ -1,6 +1,7 @@
 <mat-nav-list>
     <h2 class="mat-headline">Cities</h2>
-    <a mat-list-item *ngFor="let city of cities">{{city.address.county}} </a>
+    <a mat-list-item (click)="onClickMe($event)" *ngFor="let city of cities">{{city.address.county}}
+    </a>
     <form [formGroup]="cityForm" (ngSubmit)="inputCity.blur()">
         <mat-form-field>
             <input #inputCity (blur)="onSubmit($event)" matInput placeholder="Add a city" formControlName="cityName">

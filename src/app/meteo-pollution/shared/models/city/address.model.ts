@@ -3,4 +3,6 @@ export class Address {
     state: string;
     country: string;
     postcode: string;
+    village: string;
+    city: string;
 }

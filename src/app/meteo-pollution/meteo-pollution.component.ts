@@ -19,10 +19,14 @@ export class MeteoPollutionComponent {
   }
 
   setCity(city: City) {
+    this.onCity(city);
+    this.addCity(this.city);
+  }
+
+  onCity(city: City) {
     this.city = city;
-    this.addCity(city);
     this.meteo = null;
-    this.pollution = null;
+    this.pollution = null;    
   }
 
   addCity(city: City) {

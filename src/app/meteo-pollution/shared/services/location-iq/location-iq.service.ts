@@ -17,6 +17,6 @@ export class LocationIqService {
   }
 
   getReverse(city: City): Observable<LocationIQ> {
-    return this.http.get<LocationIQ>(`https://eu1.locationiq.com/v1/search.php?key=${environment.locationIQ}&q=${city.address.county}&format=json`);
+    return this.http.get<LocationIQ>(`https://api.locationiq.com/v1/autocomplete.php?key=${environment.locationIQ}&q=${city.address.county}`);
   }
 }

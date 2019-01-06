@@ -4,9 +4,8 @@ import { City } from '../shared/models/city/city.model';
 import { Address } from '../shared/models/city/address.model';
 import { CitiesService } from '../shared/services/cities/cities.service';
 import { LocationIqService } from '../shared/services/location-iq/location-iq.service';
-import { LocationIQ } from '../shared/models/city/location-iq.model';
-import { HttpErrorResponse } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material';
+import { LocationIQ } from '../shared/models/city/location-iq.model';
 
 @Component({
   selector: 'mp-cities',
@@ -18,11 +17,13 @@ export class CitiesComponent {
   public cityForm: FormGroup;
   public cities: City[];
   @Output() onCity: EventEmitter<City>;
+  @Output() onCityClick: EventEmitter<City>;
 
   constructor(private snackBar: MatSnackBar, private formBuilder: FormBuilder, private citiesService: CitiesService, private locationIqService: LocationIqService) {
     this.cityForm = this.createCityForm();
     this.citiesService.get().subscribe((cities: City[]) => this.cities = cities);
     this.onCity = new EventEmitter;
+    this.onCityClick = new EventEmitter;
   }
 
   createCityForm(): FormGroup {
@@ -49,6 +50,18 @@ export class CitiesComponent {
         () => this.snackBar.open("This input isn't a city", "Ok")
       )
     }
+  }
+
+  onClickMe(event: MouseEvent) {
+    const city: City = new City;
+    city.address = new Address;
+    city.address.county = event.srcElement.textContent;
+    this.locationIqService.getReverse(city).subscribe(
+      () => {
+        this.onCityClick.emit(city);
+      },
+      () => this.snackBar.open("This input isn't a city", "Ok"))
+    
   }
 
 }

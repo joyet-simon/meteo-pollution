@@ -35,7 +35,7 @@ export class CityComponent {
         const city = new City;
         city.position = position;
         city.address = locationIQ.address;
-        this.onCity.emit(city);
+        this.onCity.emit(city);        
       },
       (error: HttpErrorResponse) => this.snackBar.open("City Location Error", "Retry").onAction().subscribe(() => this.findCityName(position))
     )
